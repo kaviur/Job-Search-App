@@ -4,13 +4,19 @@ import { BrowserRouter } from "react-router-dom";
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { UserContext } from './context/UserContext';
+import { OfferContext } from './context/OfferContext';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
+    <UserContext>
+      <OfferContext>
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
+      </OfferContext>
+    </UserContext>
   </React.StrictMode>
 );
 

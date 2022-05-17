@@ -1,6 +1,11 @@
 import React from 'react'
+import { useContext } from 'react';
+import { userCont } from '../../context/UserContext';
 
 export const Navbar = () => {
+
+  const { user } = useContext(userCont);
+
   return (
     <div>
       <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
@@ -15,11 +20,13 @@ export const Navbar = () => {
                 <a class="nav-link active" aria-current="page" href="#/">Home</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#/">Login</a>
+                {!user.logged&&<a class="nav-link" href="/login">Login</a>}
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#/">Register</a>
+                {!user.logged&&<a class="nav-link" href="/register">Registro</a>}
               </li>
+
+              {user.logged&&<li>{user.name}</li>}
             </ul>
           </div>
         </div>
@@ -27,3 +34,4 @@ export const Navbar = () => {
     </div>
   )
 }
+
