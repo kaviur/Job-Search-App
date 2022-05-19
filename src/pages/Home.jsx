@@ -4,8 +4,7 @@ import { CrudOffers } from '../components/offers/CrudOffers'
 export const Home = () => {
   return (
     <div>
-      <h2>home</h2>
-      {/* <CrudOffers /> */}
+      <CrudOffers /> 
     </div>
   )
 }

@@ -27,14 +27,15 @@ export const Login = () => {
       )
     .then(data=>{
         
+      
         localStorage.setItem("token",data.token)
         setUser({
           id:data.user.id,
           logged:true,
-          name:user.data.name
+          name:data.data.name
         })
-        
-        fetch("https://jobsearch-350323.ue.r.appspot.com/api/users",{
+    
+        fetch("https://jobsearch-350323.ue.r.appspot.com/api/offer/recruiterOffers",{
                 headers:{
                     "Authorization":"Bearer "+localStorage.getItem("token")
                 }
@@ -45,9 +46,11 @@ export const Login = () => {
             .then(data=>{
                 console.log(data)
             })
+
+           
     })
     .catch(error=>setUser({logged:false}))
-    console.log("valor del user", user)
+    
   }
 
 

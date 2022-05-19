@@ -2,13 +2,13 @@
 import React from 'react'
 import { useContext } from 'react'
 import { Link } from 'react-router-dom'
-import { OfferContext } from '../../context/OfferContext'
-
+import { offerCont } from '../../context/OfferContext'
 export const ListOffers = () => {
 
 
-    const { offers } = useContext(OfferContext)
-    console.log( offers )
+    const { offers, removeOffer } = useContext(offerCont)
+    
+ 
     return (
     <div>
         <div className='row justify-content-center'>
@@ -24,12 +24,17 @@ export const ListOffers = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <th scope="row">1</th>
-                            <td>Mark</td>
-                            <td> <Link to="/editar/1" class="btn btn-warning">Editar</Link>
-                            <button type="button" class="btn btn-danger">Eliminar</button> </td>
-                        </tr>
+                        {
+                            offers.map((offer) => (
+                                <tr>
+                                    <th scope="row" key={offer.id}>1</th>
+                                    <td>{offer.title}</td>
+                                    <td> <Link to={`/editOffer/${offer.id}`} class="btn btn-warning">Editar</Link>
+                                    <button type="button" onClick={() => removeOffer(offer.id)} class="btn btn-danger">Eliminar</button> </td>
+                                </tr>
+                              ))
+                        }
+                   
                     </tbody>
                 </table>
             </div>
