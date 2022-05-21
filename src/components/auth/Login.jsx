@@ -34,8 +34,7 @@ if(context.user.logged){
       navigate("/",{
           replace:true
       })
-  })
-
+    })
 }
 
 

@@ -1,8 +1,8 @@
 import {Routes,Route} from 'react-router-dom'
 import { Login } from './components/auth/Login';
 import { Register } from './components/auth/Register';
-import { AddOffer } from './components/offers/AddOffer';
-import { EditOffer } from './components/offers/EditOffer';
+import { AddOffer } from './components/recruiters/dashboard/AddOffer';
+import { EditOffer } from './components/recruiters/dashboard/EditOffer';
 import { Navbar } from './components/ux/Navbar';
 import { Home } from './pages/Home';
 import { NotFound } from './pages/NotFound';

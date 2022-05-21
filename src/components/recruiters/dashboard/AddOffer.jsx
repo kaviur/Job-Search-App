@@ -1,17 +1,16 @@
 import React from 'react'
-import { offerCont } from '../../context/OfferContext'
+import { offerCont } from '../../../context/OfferContext'
 import { useContext, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { v4 as uuid } from 'uuid'
+import { postWithToken } from '../../../api';
 
 export const AddOffer = () => {
 
   const { addOffer, offers } = useContext(offerCont)
   const navigate = useNavigate();
-
   const [offer, setOffer] = useState('');
 
-  
 
   const onSubmit = ( event ) => {
 
@@ -21,7 +20,6 @@ export const AddOffer = () => {
     // console.log("datoos:", title.value, description.value, programming_languages.value, countries.value, salary.value)
 
     const newOffer = {
-      _id: uuid(),
       title: title.value,
       description: description.value,
       programming_languages: programming_languages.value,
@@ -29,9 +27,17 @@ export const AddOffer = () => {
       salary: salary.value,
       english_level: english_level.value
     }
-    // dispatch( eventStartAddNew( formValues) );
-    addOffer(newOffer);
-    navigate("/listOffers", { replace: true });
+
+    postWithToken("/api/offer/",newOffer)
+    .then(data=>{
+      // dispatch( eventStartAddNew( formValues) );
+      addOffer(newOffer);
+      navigate("/listOffers", { replace: true });
+    })
+    .catch(error=>{
+      console.log(error.response.data)
+    }
+    )
   }
 
 

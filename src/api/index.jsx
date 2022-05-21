@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const url = "https://backendnodejstzuzulcode.uw.r.appspot.com"
+const url = "https://jobsearch-350323.ue.r.appspot.com"
 
 const instance = axios.create({
     baseURL:url
@@ -8,6 +8,10 @@ const instance = axios.create({
 
 const post = (url,data)=>{
     return instance.post(url,data)
+}
+
+const get = (url)=>{
+    return instance.get(url)
 }
 
 const postWithToken = async (url,data)=>{
@@ -31,4 +35,4 @@ const postWithToken = async (url,data)=>{
 
 export default instance
 
-export {post,postWithToken}
+export {post,postWithToken,get}

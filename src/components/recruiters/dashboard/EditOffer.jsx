@@ -1,14 +1,13 @@
 import React from 'react'
 import { useState, useContext, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom'
-import { offerCont } from '../../context/OfferContext';
+import { offerCont } from '../../../context/OfferContext';
 
 export const EditOffer = ( props ) => {
 
   const { offers, editOffer } = useContext(offerCont)
 
   const [selectedOffer, setselectedOffer] = useState({
-    id: '',
     title: '',
     description: '',
     programming_languages: '',

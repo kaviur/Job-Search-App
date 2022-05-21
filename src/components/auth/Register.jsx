@@ -23,6 +23,7 @@ export  function Register() {
 
       console.log(role.current.value)
       setError({...error,loading:true})
+      
       post("/api/auth/signup",{
         name:name.current.value,
         email: email.current.value,
@@ -39,10 +40,10 @@ export  function Register() {
         })
       })
       .catch(error=>{
-        console.log(error.response.data)
+        console.log(error)
         setError({
           isError:true,
-          message:error.response.data.message,
+          message:"algo salio mal",
           loading:false
         })
       })
