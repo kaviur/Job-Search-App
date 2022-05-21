@@ -1,5 +1,10 @@
 import { types } from '../types/types'
 
+
+export const initialState = {
+    offers: []
+}
+
 const offersReducers = ( state= {}, action) => {
 
     switch( action.type) {

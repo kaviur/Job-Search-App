@@ -1,6 +1,7 @@
 import React from 'react'
 import { useContext } from 'react';
 import { userCont } from '../../context/UserContext';
+import LogOut from '../auth/Logout';
 
 export const Navbar = () => {
 
@@ -25,8 +26,12 @@ export const Navbar = () => {
               <li class="nav-item">
                 {!user.logged&&<a class="nav-link" href="/register">Registro</a>}
               </li>
-
-              {user.logged&&<li>{user.name}</li>}
+              <li class="nav-item">
+                {user.logged&&<a class="nav-link" href="/listOffers">Lista de Ofertas</a>}
+              </li>
+              <li class="nav-item"> 
+              {user.logged&&<LogOut/>}
+              </li>
             </ul>
           </div>
         </div>

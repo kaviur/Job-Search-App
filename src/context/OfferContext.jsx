@@ -1,14 +1,11 @@
 import React, { createContext, useReducer} from 'react'
-import offersReducer from '../reducers/offersReducer'
+import offersReducer, { initialState } from '../reducers/offersReducer'
 import { types } from '../types/types'
 
-const initialState = {
-    offers: []
-}
+
 
 //create Context
-export const offerCont = createContext( initialState )
-
+export const offerCont = createContext( )
 
 export const OfferContext = ({ children }) => {
 
@@ -30,20 +27,19 @@ export const OfferContext = ({ children }) => {
         })
     }
 
+
     const editOffer = (offer) => {
         dispatch({
             type: types.editOffer,
             payload: offer
         })
     }
-
-
-
+ 
     return <offerCont.Provider value={{
         offers: state.offers,
         removeOffer,
         addOffer,
-        editOffer
+        editOffer,
       }}>
         { children }
     </offerCont.Provider>

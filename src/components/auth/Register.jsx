@@ -1,78 +1,127 @@
-
-import { useContext } from 'react';
+import React,{useContext, useRef, useState} from 'react'
+import { post } from '../../api';
 import { userCont } from '../../context/UserContext';
 import "../../css/register.css"
 
+export  function Register() {
 
-export const Register = () => {
+  const context = useContext(userCont);
 
-  const {user,setUser } = useContext(userCont);
+  const [error,setError] = useState({
+    isError:false,
+    message:"",
+    loading:false
+  })
 
-  const handleRegister = (event) => {
-    event.preventDefault()
-    const {name, role, email,password} = event.target
+  const email = useRef()
+  const password = useRef()
+  const name = useRef()
+  const role = useRef()
 
-    fetch("https://jobsearch-350323.ue.r.appspot.com/api/auth/signup",{
-      method:"POST",
-      headers:{
-        "Content-Type":"application/json"
-      },
-      body:JSON.stringify({
-      name:name.value,
-      role:role.value,
-      email:email.value,
-      password: password.value
+  const handleRegister = (event) =>{
+      event.preventDefault()
+
+      console.log(role.current.value)
+      setError({...error,loading:true})
+      post("/api/auth/signup",{
+        name:name.current.value,
+        email: email.current.value,
+        password:password.current.value,
+        role:role.current.value
       })
-    }).then(res=>res.json())
-      .then(data=>{
-        console.log("user:",data)
-        setUser({logged:true,name:user.data.userName})
-    }).catch(error=>setUser({logged:false}))
+      .then(({data})=>{
+        setError({...error,loading:false})
+        localStorage.setItem("token",data.token)
+        context.setUser({
+          id:data.user.id,
+          name:data.user.name,
+          logged:true
+        })
+      })
+      .catch(error=>{
+        console.log(error.response.data)
+        setError({
+          isError:true,
+          message:error.response.data.message,
+          loading:false
+        })
+      })
   }
 
+  const recoverSession = ()=>{
+    const token = localStorage.getItem("token")
+
+    if(token){
+      fetch("https://backendnodejstzuzulcode.uw.r.appspot.com/api/auth/validate",{
+        method:"POST",
+        headers:{
+          "Content-Type":"application/json",
+          "Authorization":"Bearer "+ token
+        },
+      })
+      .then(res=>res.json())
+      .then(data=>{
+        if(data.failed){
+          console.log(data)
+        }else{
+          context.setUser({
+            id:data.user.id,
+            name:data.user.name,
+            logged:true
+          })
+        }
+        
+      })
+      .catch(error=>console.log(error))
+    }
+    
+  }
 
   return (
     <div className="formRegister">
-        <div className="row">
-          <form onSubmit={handleRegister}>
+         <button onClick={recoverSession}>Recuperar sesión</button>
+         <div className="row">
+           <form onSubmit={handleRegister}>
               <h4 className='titleFormRegister'>Registro</h4>
-              <div className="row">
-                <div className='col-md-12'>
-                  <div className="form-group">
-                    <label>Nombre</label>
-                    <input type="text" className="form-control" placeholder="Nombre" name="name"/>
-                  </div>
-                </div>
-              </div>
-              <br />
-              <div className="row">
-                <div className='col-md-6'>
-                  <div className="form-group">
-                    <label>Rol</label><br />
-                   <select name='role'>
-                      <option value={1}>Postulante</option>
-                      <option value={2}>Reclutador</option>
-                   </select>
-                  </div>
-                </div>
-              </div> 
-              <br />
-              <div className="form-group">
-                <label>Email</label>
-                <input type="email" className="form-control" placeholder="Enter email" name="email"/>
-              </div>
+               <div className="row">
+                 <div className='col-md-12'>
+                   <div className="form-group">
+                     <label>Nombre</label>
+                     <input type="text" className="form-control" placeholder="Nombre" ref={name} />
+                   </div>
+                 </div>
+               </div>
+               <br />
+               <div className="row">
+                 <div className='col-md-6'>
+                   <div className="form-group">
+                     <label>Rol</label><br />
+                    <select ref={role}>
+                       <option value="applicant">Postulante</option>
+                       <option value="employer">Reclutador</option>
+                    </select>
+                   </div>
+                 </div>
+               </div> 
+               <br />
+               <div className="form-group">
+                 <label>Email</label>
+                 <input type="email" className="form-control" placeholder="Enter email" ref={email}/>
+               </div>
 
-              <div className="form-group">
-                <label>Contraseña</label>
-                <input type="password" className="form-control" placeholder="Enter password" name="password"/>
-              </div>
+               <div className="form-group">
+                 <label>Contraseña</label>
+                 <input type="password" className="form-control" placeholder="Enter password" ref={password}/>
+               </div>
 
-              <button className="btn btn-dark btn-lg btn-block">Registrarse</button>
-              <p className="forgot-password text-right">
-                  ¿Ya tienes una cuenta? <a href="/login">Entrar</a>
-              </p>
-        </form>
-      </div>
+               <button className="btn btn-dark btn-lg btn-block">Registrarse</button>
+               <p className="forgot-password text-right">
+                   ¿Ya tienes una cuenta? <a href="/login">Entrar</a>
+               </p>
+         </form>
+       </div>
     </div>
-  )
+
+)
 }
+
