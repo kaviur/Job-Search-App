@@ -30,6 +30,9 @@ export const Navbar = () => {
               <li>
                 {!user.logged&&<a href="/login">Iniciar Sesión</a>}
               </li>
+              <li className="nav-item">
+                {user.logged&&<a className="nav-link" href="/dashboard">Dashboard</a>}
+              </li>
               <li>
                 {user.logged&&<LogOut/>}
               </li>

@@ -6,7 +6,7 @@ const OfferDetail = ({id}) => {
   const [offer, setOffer] = useState({})
 
   useEffect(() => {
-    get(`/api/offer/${id}`)
+    get(`/api/offer/id/${id}`)
     .then(data => {
       console.log(data)
       setOffer(data.data)

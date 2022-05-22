@@ -1,10 +1,13 @@
 import React from 'react'
 import { getWithToken } from '../../../api'
 import { Link } from 'react-router-dom'
-import { useState, useEffect } from 'react'
+import { useContext, useState, useEffect } from 'react'
+import { offerCont } from '../../../context/OfferContext'
+import OfferDetail from '../../offers/OfferDetail'
 
 const MyOfferts = () => {
-
+    
+    const { offers, removeOffer } = useContext(offerCont)
     const [idOffer, setIdOffer] = useState("")
     const [listOffers, setListOffers] = useState([])
     const [showPostulants, setShowPostulants] = useState(false)
@@ -47,7 +50,7 @@ const MyOfferts = () => {
                                     <td>{offer.title}</td>
                                     <td> 
                                         <Link to={`/editOffer/${offer._id}`} className="btn btn-warning">Editar</Link>
-                                        <button type="button" className="btn btn-danger">Eliminar</button>
+                                        <button type="button" onClick={() => removeOffer(offer.id)} className="btn btn-danger">Eliminar</button>
                                         <button type="button" onClick={() => setIdOffer(offer._id)} className="btn btn-info">Ver detalle</button>
                                     </td>
                                     <td><button type="button" onClick={() => menuPostulantes(offer.applicants)} className="btn btn-danger">{offer.applicants.length}</button></td>
@@ -81,7 +84,11 @@ const MyOfferts = () => {
                     </div>
                 }
                    
-
+                {
+                    idOffer && (
+                        <OfferDetail id={idOffer} />
+                    )
+                }
             </div>
         </div>
     );
