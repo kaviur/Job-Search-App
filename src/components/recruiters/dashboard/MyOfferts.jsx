@@ -1,34 +1,27 @@
-
 import React from 'react'
-import { useContext, useState, useEffect } from 'react'
+import { getWithToken } from '../../../api'
 import { Link } from 'react-router-dom'
-import { offerCont } from '../../context/OfferContext'
-import OfferDetail from './OfferDetail'
+import { useState, useEffect } from 'react'
 
+const MyOfferts = () => {
 
-export const ListOffers = () => {
+  const [idOffer, setIdOffer] = useState("")
+  const [listOffers, setListOffers] = useState([])
 
-    const { offers, removeOffer } = useContext(offerCont)
-    const [idOffer, setIdOffer] = useState("")
+  //con este fetch se pueden listar
 
-    const [listOffers, setListOffers] = useState([])
-
-    //con este fetch se pueden listar
-
-    useEffect(() => {
-        fetch('https://jobsearch-350323.ue.r.appspot.com/api/offer')
-        .then((response) => {
-            return response.json()
-        })
-        .then((listOffers) => {
-            console.log("lista de ", listOffers)
-            setListOffers(listOffers)
-        })
-    }, [])
+  useEffect(() => {
+    getWithToken('/api/offer/recruiterOffers')
+    .then(({data}) => {
+      console.log("lista de ", data)
+      setListOffers(data)
+    })
+  }, [])
 
     return (
         <div>
-            <div className='row justify-content-center'>
+          hi
+            {/* <div className='row justify-content-center'>
                 <div className='col-md-6'>
                     <table className="table">
                         <thead>
@@ -48,7 +41,7 @@ export const ListOffers = () => {
                                     <td>{offer.title}</td>
                                     <td> 
                                         <Link to={`/editOffer/${offer._id}`} className="btn btn-warning">Editar</Link>
-                                        <button type="button" onClick={() => removeOffer(offer.id)} className="btn btn-danger">Eliminar</button>
+                                        <button type="button" className="btn btn-danger">Eliminar</button>
                                         <button type="button" onClick={() => setIdOffer(offer._id)} className="btn btn-info">Ver detalle</button>
                                     </td>
                                 </tr>
@@ -56,15 +49,10 @@ export const ListOffers = () => {
                         }                
                         </tbody>
                     </table>
-                    {
-                        idOffer && (
-                            <OfferDetail id={idOffer} />
-                        )
-                    }
                 </div>    
-            </div>
+            </div> */}
         </div>
     );
+}
 
-
- }
+export default MyOfferts

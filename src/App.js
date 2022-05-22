@@ -11,6 +11,7 @@ import { ListOffers } from './components/offers/ListOffers';
 import { Navbar } from './components/layouts/Navbar';
 import Footer from './components/layouts/Footer';
 import { Contact } from './pages/Contact';
+import { Dashboard } from './pages/Dashboard'
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
         <Route path="/listOffers" element={< ListOffers/>} />
         <Route path="/addOffer" element={<AddOffer />} />
         <Route path="/editOffer/:id" element={<EditOffer />} />
+        <Route path="/dashboard" element={<Dashboard />} />
       </Routes>
       <Footer />
     </Provider>
