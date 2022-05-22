@@ -79,8 +79,7 @@ export  function Register() {
   }
 
   return (
-    <div>
-      <br /><br /><br />
+    <div className='marginT'>
       <div className="formRegister">
         <h4 className='titleFormRegister'>Registro</h4>
          {/* <button onClick={recoverSession}>Recuperar sesión</button> */}
@@ -113,54 +112,8 @@ export  function Register() {
                 ¿Ya tienes una cuenta? <a href="/login" className='colorT'>Entrar</a>
                </p>
         </form>
-
-
-
-
-         {/* <div className="row">
-           <form onSubmit={handleRegister}>
-              <h4 className='titleFormRegister'>Registro</h4>
-               <div className="row">
-                 <div className='col-md-12'>
-                   <div className="form-group">
-                     <label>Nombre</label>
-                     <input type="text" className="form-control" placeholder="Nombre" ref={name} />
-                   </div>
-                 </div>
-               </div>
-               <br />
-               <div className="row">
-                 <div className='col-md-6'>
-                   <div className="form-group">
-                     <label>Rol</label><br />
-                    <select ref={role} className="select-css">
-                       <option value="applicant">Postulante</option>
-                       <option value="employer">Reclutador</option>
-                    </select>
-                   </div>
-                 </div>
-               </div> 
-               <br />
-               <div className="form-group">
-                 <label>Email</label>
-                 <input type="email" className="form-control" placeholder="Enter email" ref={email}/>
-               </div>
-
-               <div className="form-group">
-                 <label>Contraseña</label>
-                 <input type="password" className="form-control" placeholder="Enter password" ref={password}/>
-               </div>
-
-               <button className="btn btn-dark btn-lg btn-block">Registrarse</button>
-               <p className="forgot-password text-right">
-                   ¿Ya tienes una cuenta? <a href="/login">Entrar</a>
-               </p>
-         </form>
-       </div> */}
       </div>
     </div>
-    
-
 )
 }
 

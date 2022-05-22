@@ -19,7 +19,9 @@ export const Navbar = () => {
         
           <nav id="navbar" className="navbar">
             <ul>
-              <li><a className="active " href="/">Home</a></li>
+              <li>
+                {!user.logged&&<a className="active " href="/">Home</a>}
+              </li>
               <li>
                 {user.logged&&<a href="/listOffers">Lista de ofertas</a>}
               </li>
@@ -30,6 +32,7 @@ export const Navbar = () => {
               <li>
                 {!user.logged&&<a href="/login">Iniciar Sesión</a>}
               </li>
+           
               <li>
                 {user.logged&&<LogOut/>}
               </li>
