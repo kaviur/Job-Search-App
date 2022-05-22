@@ -12,8 +12,34 @@ import { Navbar } from './components/layouts/Navbar';
 import Footer from './components/layouts/Footer';
 import { Contact } from './pages/Contact';
 import { Dashboard } from './pages/Dashboard'
+import { useContext, useEffect } from 'react';
+import { postWithToken } from './api';
+import { UserContext } from './context/UserContext';
 
 function App() {
+
+  const context = useContext(UserContext)
+  
+  useEffect(()=>{
+    postWithToken("/api/auth/validate")
+    .then(({data})=>{
+      if(data.failed){
+        console.log(data)
+      }else{
+        console.log(data);
+        console.log(data.user.name)
+        context.setUser(
+          {
+            id: data.user.id,
+            role: data.user.role,
+            name: data.user.name,
+            email: data.user.email
+          }
+        )
+      }
+    })
+  },[])
+
   return (
     <Provider store={ store }>
       <Navbar />

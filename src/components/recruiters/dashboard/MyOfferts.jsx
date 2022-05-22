@@ -5,23 +5,29 @@ import { useState, useEffect } from 'react'
 
 const MyOfferts = () => {
 
-  const [idOffer, setIdOffer] = useState("")
-  const [listOffers, setListOffers] = useState([])
+    const [idOffer, setIdOffer] = useState("")
+    const [listOffers, setListOffers] = useState([])
+    const [showPostulants, setShowPostulants] = useState(false)
+    const [postulants, setPostulants] = useState([])
 
-  //con este fetch se pueden listar
+    useEffect(() => {
+        getWithToken('/api/offer/recruiterOffers')
+        .then(({data}) => {
+        console.log("lista de ", data)
+        setListOffers(data)
+        })
+    }, [])
 
-  useEffect(() => {
-    getWithToken('/api/offer/recruiterOffers')
-    .then(({data}) => {
-      console.log("lista de ", data)
-      setListOffers(data)
-    })
-  }, [])
+    const menuPostulantes = (postulantsArray) => {
+        setShowPostulants(true)
+        setPostulants(postulantsArray)
+    }
+
 
     return (
         <div>
-          hi
-            {/* <div className='row justify-content-center'>
+            <h1>Mis publicaciones</h1>
+            <div className='row justify-content-center'>
                 <div className='col-md-6'>
                     <table className="table">
                         <thead>
@@ -44,13 +50,39 @@ const MyOfferts = () => {
                                         <button type="button" className="btn btn-danger">Eliminar</button>
                                         <button type="button" onClick={() => setIdOffer(offer._id)} className="btn btn-info">Ver detalle</button>
                                     </td>
+                                    <td><button type="button" onClick={() => menuPostulantes(offer.applicants)} className="btn btn-danger">{offer.applicants.length}</button></td>
                                 </tr>
                               ))
                         }                
                         </tbody>
                     </table>
                 </div>    
-            </div> */}
+                {
+                    showPostulants && 
+                    <div className='col-md-6'>
+                        <table className="table">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Nombre</th>
+                                    <th scope="col">Correo</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            {
+                                postulants.map((postulant) => (
+                                    <tr key={postulant._id}>
+                                        <td>{postulant.name}</td>
+                                        <td>{postulant.email}</td>
+                                    </tr>
+                                ))
+                            }
+                            </tbody>
+                        </table>
+                    </div>
+                }
+                   
+
+            </div>
         </div>
     );
 }

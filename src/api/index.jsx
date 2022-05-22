@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const url = "https://backendnodejstzuzulcode.uw.r.appspot.com"
+const url = "https://jobsearch-350323.ue.r.appspot.com/"
 
 const instance = axios.create({
     baseURL:url
