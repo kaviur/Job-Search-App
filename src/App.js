@@ -14,11 +14,11 @@ import { Contact } from './pages/Contact';
 import { Dashboard } from './pages/Dashboard'
 import { useContext, useEffect } from 'react';
 import { postWithToken } from './api';
-import { UserContext } from './context/UserContext';
+import { userCont } from './context/UserContext';
 
 function App() {
 
-  const context = useContext(UserContext)
+  const context = useContext(userCont)
   
   useEffect(()=>{
     postWithToken("/api/auth/validate")
@@ -33,7 +33,8 @@ function App() {
             id: data.user.id,
             role: data.user.role,
             name: data.user.name,
-            email: data.user.email
+            email: data.user.email,
+            logged:true
           }
         )
       }
