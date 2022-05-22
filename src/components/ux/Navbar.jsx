@@ -29,6 +29,9 @@ export const Navbar = () => {
               <li className="nav-item">
                 {user.logged&&<a className="nav-link" href="/listOffers">Lista de Ofertas</a>}
               </li>
+              <li className="nav-item">
+                {user.logged&&<a className="nav-link" href="/dashboard">Dashboard</a>}
+              </li>
               <li className="nav-item"> 
               {user.logged&&<LogOut/>}
               </li>
