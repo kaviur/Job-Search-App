@@ -3,21 +3,21 @@
     text-align: center;
 }
 
-.formLogin {
+
+  .formLogin {
     position: relative;
     z-index: 1;
-    background: rgb(139, 163, 214);
+    background:  rgb(139, 163, 214);
     max-width: 360px;
     margin: 20px auto 100px;
     padding: 45px;
     box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
   }
-
   .formLogin form button {
     font-family: "Roboto", sans-serif;
     text-transform: uppercase;
     outline: 0;
-    background: #3645c5;
+    background: #1c3745;
     width: 80%;
     border: 0;
     padding: 15px;
