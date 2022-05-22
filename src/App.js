@@ -3,12 +3,14 @@ import { Login } from './components/auth/Login';
 import { Register } from './components/auth/Register';
 import { AddOffer } from './components/recruiters/dashboard/AddOffer';
 import { EditOffer } from './components/recruiters/dashboard/EditOffer';
-import { Navbar } from './components/ux/Navbar';
 import { Home } from './pages/Home';
 import { NotFound } from './pages/NotFound';
 import { Provider } from 'react-redux'
 import { store } from './store/store';
 import { ListOffers } from './components/offers/ListOffers';
+import { Navbar } from './components/layouts/Navbar';
+import Footer from './components/layouts/Footer';
+import { Contact } from './pages/Contact';
 
 function App() {
   return (
@@ -19,10 +21,12 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} /> 
         <Route path="/register" element={<Register />} />
+        <Route path="/contact" element={<Contact />} />
         <Route path="/listOffers" element={< ListOffers/>} />
         <Route path="/addOffer" element={<AddOffer />} />
         <Route path="/editOffer/:id" element={<EditOffer />} />
       </Routes>
+      <Footer />
     </Provider>
   );
 }

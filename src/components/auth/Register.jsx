@@ -53,7 +53,7 @@ export  function Register() {
     const token = localStorage.getItem("token")
 
     if(token){
-      fetch("https://backendnodejstzuzulcode.uw.r.appspot.com/api/auth/validate",{
+      fetch("https://jobsearch-350323.ue.r.appspot.com/api/auth/validate",{
         method:"POST",
         headers:{
           "Content-Type":"application/json",
@@ -79,9 +79,45 @@ export  function Register() {
   }
 
   return (
-    <div className="formRegister">
-         <button onClick={recoverSession}>Recuperar sesión</button>
-         <div className="row">
+    <div>
+      <br /><br /><br />
+      <div className="formRegister">
+        <h4 className='titleFormRegister'>Registro</h4>
+         {/* <button onClick={recoverSession}>Recuperar sesión</button> */}
+         <form  onSubmit={ handleRegister} className="php-email-form"> 
+            <div className="row">
+              <div className="col-md-12 form-group">
+                <label>Nombre</label>
+                <input type="text" className="form-control" placeholder="Nombre" ref={name} />
+              </div>
+              <div className="form-group mt-3">
+                <label>Rol</label>
+                <select ref={role} className="select-css">
+                  <option value="applicant">Postulante</option>
+                  <option value="employer">Reclutador</option>
+                </select>
+              </div>
+            </div>
+            <div className="row">
+                <div className="col-md-12 form-group">
+                  <label>Email</label>
+                  <input type="email" className="form-control" placeholder="usuario@mail.com" ref={email} ></input>
+                </div>
+              </div>
+              <div className="form-group mt-3">
+                <label>Contraseña</label>
+                <input type="password" className="form-control" placeholder="Escribe tu password" ref={password}></input>
+            </div>
+            <div className="text-center"><button type="submit">Registrarse</button></div>
+              <p className="forgot-password text-right">
+                ¿Ya tienes una cuenta? <a href="/login" className='colorT'>Entrar</a>
+               </p>
+        </form>
+
+
+
+
+         {/* <div className="row">
            <form onSubmit={handleRegister}>
               <h4 className='titleFormRegister'>Registro</h4>
                <div className="row">
@@ -97,7 +133,7 @@ export  function Register() {
                  <div className='col-md-6'>
                    <div className="form-group">
                      <label>Rol</label><br />
-                    <select ref={role}>
+                    <select ref={role} className="select-css">
                        <option value="applicant">Postulante</option>
                        <option value="employer">Reclutador</option>
                     </select>
@@ -120,8 +156,10 @@ export  function Register() {
                    ¿Ya tienes una cuenta? <a href="/login">Entrar</a>
                </p>
          </form>
-       </div>
+       </div> */}
+      </div>
     </div>
+    
 
 )
 }

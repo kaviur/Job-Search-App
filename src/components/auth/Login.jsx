@@ -39,27 +39,28 @@ if(context.user.logged){
 
 
   return (
-
-      <div className="formLogin">
-        <div className="row">
-          <form onSubmit={ handleLogin}>
-            <h4 className='titleFormLogin'> Login </h4>
-            <div className="form-group">
-              <label>Email</label>
-              <input type="email" className="form-control" placeholder="usuario@mail.com" name="email" />
-            </div>
-
-            <div className="form-group">
-              <label>Contraseña</label>
-              <input type="password" className="form-control" placeholder="Escribe tu password" name="password"/>
-            </div>
-
-            <button className="btn btn-dark btn-lg btn-block">Entrar</button>
-            <p>
-              ¿No tienes una cuenta? <a href="register">Crear mi cuenta</a>
-            </p>
-          </form>
-        </div>
+      <div>
+        <br /><br /><br />   
+        <div className="formLogin">
+          <h4 className='titleFormRegister'>Login</h4>
+            <form  onSubmit={ handleLogin} className="php-email-form"> 
+              <div className="row">
+                <div className="col-md-12 form-group">
+                  <label>Email</label>
+                  <input type="email" className="form-control" placeholder="usuario@mail.com" name="email" ></input>
+                </div>
+              </div>
+              <div className="form-group mt-3">
+                <label>Contraseña</label>
+                <input type="password" className="form-control" placeholder="Escribe tu password" name="password"></input>
+              </div>
+              <div className="text-center"><button type="submit">Login</button></div>
+              <p>
+                ¿No tienes una cuenta? <a href="register" className='colorT'>Crear mi cuenta</a>
+              </p>
+            </form>
+          </div>
+        
       </div>
   )
 }
