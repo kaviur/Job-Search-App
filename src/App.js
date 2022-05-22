@@ -9,6 +9,7 @@ import { NotFound } from './pages/NotFound';
 import { Provider } from 'react-redux'
 import { store } from './store/store';
 import { ListOffers } from './components/offers/ListOffers';
+import { Dashboard } from './pages/Dashboard'
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
         <Route path="/listOffers" element={< ListOffers/>} />
         <Route path="/addOffer" element={<AddOffer />} />
         <Route path="/editOffer/:id" element={<EditOffer />} />
+        <Route path="/dashboard" element={<Dashboard />} />
       </Routes>
     </Provider>
   );

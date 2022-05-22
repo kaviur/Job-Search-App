@@ -3,7 +3,6 @@ import { types } from '../types/types'
 
 export const initialState = {
     offers: [],
-    idOffer: ""
 }
 
 const offersReducers = ( state= {}, action) => {

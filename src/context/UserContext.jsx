@@ -8,7 +8,8 @@ export const UserContext = ({ children }) => {
     const [user, setUser] = useState({
       id:"",
       name:"",
-      logged:false
+      logged:false,
+      role:2,
     });
 
     return <userCont.Provider value={{

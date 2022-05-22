@@ -29,7 +29,8 @@ if(context.user.logged){
       context.setUser({
           id:user.id,
           name:user.name,
-          logged:true
+          logged:true,
+          role:user.role
       })
       navigate("/",{
           replace:true
