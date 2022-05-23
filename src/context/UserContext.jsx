@@ -8,6 +8,7 @@ export const UserContext = ({ children }) => {
     const [user, setUser] = useState({
       id:"",
       name:"",
+      email:"",
       logged:false,
       role:2,
     });

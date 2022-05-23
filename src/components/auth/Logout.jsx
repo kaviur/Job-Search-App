@@ -1,9 +1,12 @@
 import React, { useContext } from 'react'
-import { UserContext } from '../../context/UserContext'
+import { useNavigate } from 'react-router-dom';
+import { userCont } from '../../context/UserContext'
+import "../../css/login.css"
 
 export default function LogOut() {
 
-    const context = useContext(UserContext)
+    const context = useContext(userCont)
+    const navigate = useNavigate();
 
     const handleLogOut=()=>{
         localStorage.removeItem("token")
@@ -12,10 +15,13 @@ export default function LogOut() {
             name:"",
             id:""
         })
+        navigate("/",{
+            replace:true
+        })
     }
     return (
-        <button onClick={handleLogOut}>
+        <a type='button' href='/#' className='titleLogout' onClick={handleLogOut}>
             Cerrar sesión
-        </button>
+        </a>
     )
 }

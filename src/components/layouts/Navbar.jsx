@@ -25,14 +25,15 @@ export const Navbar = () => {
               <li>
                 {user.logged&&<a href="/listOffers">Lista de ofertas</a>}
               </li>
-              <li><a href="/contact">Contacto</a></li>
+              <li>
+                {!user.logged&&<a href="/contact">Contacto</a>}
+              </li>
               <li>
                 {!user.logged&&<a href="/register">Registro</a>}
               </li>
               <li>
                 {!user.logged&&<a href="/login">Iniciar Sesión</a>}
               </li>
-           
               <li>
                 {user.logged&&<LogOut/>}
               </li>
