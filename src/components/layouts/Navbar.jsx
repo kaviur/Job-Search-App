@@ -29,6 +29,9 @@ export const Navbar = () => {
                 {user.logged&&user.role===1&&<a href="/myApplications">Mis postulaciones</a>}
               </li>
               <li>
+                {user.logged&&user.role===1&&<a href="/perfil">Mi perfil</a>}
+              </li>
+              <li>
                 {user.logged&&user.role===2&&<a href="/myOffers">Mis publicaciones</a>}
               </li>
               <li>

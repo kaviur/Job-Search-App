@@ -11,14 +11,11 @@ import { ListOffers } from './components/offers/ListOffers';
 import { Navbar } from './components/layouts/Navbar';
 import { Contact } from './pages/Contact';
 import { Dashboard } from './pages/Dashboard'
-import { useContext, useEffect } from 'react';
-import { userCont } from './context/UserContext';
 import { MyApplications } from './components/postulants/dashboard/MyApplications';
 import MyOfferts from './components/recruiters/dashboard/MyOfferts';
+import { Perfil } from './components/postulants/dashboard/Perfil';
 
 function App() {
-
-  const context = useContext(userCont)
 
   return (
     <Provider store={ store }>
@@ -35,7 +32,7 @@ function App() {
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/myApplications" element={<MyApplications />} />
         <Route path="/myOffers" element={<MyOfferts />} />
-
+        <Route path="/perfil" element={<Perfil />} />
       </Routes>
     </Provider>
   );
