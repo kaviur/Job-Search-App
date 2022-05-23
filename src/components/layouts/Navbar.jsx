@@ -26,6 +26,12 @@ export const Navbar = () => {
                 {user.logged&&<a href="/listOffers">Lista de ofertas</a>}
               </li>
               <li>
+                {user.logged&&user.role===1&&<a href="/myApplications">Mis postulaciones</a>}
+              </li>
+              <li>
+                {user.logged&&user.role===2&&<a href="/myOffers">Mis publicaciones</a>}
+              </li>
+              <li>
                 {!user.logged&&<a href="/contact">Contacto</a>}
               </li>
               <li>

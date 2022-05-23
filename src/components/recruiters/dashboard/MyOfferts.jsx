@@ -92,9 +92,6 @@ const MyOfferts = () => {
                                     )
                                 }
                             </div>
-                            <div className="modal-footer">
-                                <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -134,11 +131,6 @@ const MyOfferts = () => {
                                     </table>
                                 </div>
                             }
-                                
-               
-                            </div>
-                            <div className="modal-footer">
-                                <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                             </div>
                         </div>
                     </div>

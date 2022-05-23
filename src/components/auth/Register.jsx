@@ -1,4 +1,5 @@
 import React,{useContext, useRef, useState} from 'react'
+import { useNavigate } from 'react-router-dom';
 import { post } from '../../api';
 import { userCont } from '../../context/UserContext';
 import "../../css/register.css"
@@ -6,6 +7,7 @@ import "../../css/register.css"
 export  function Register() {
 
   const context = useContext(userCont);
+  const navigate = useNavigate();
 
   const [error,setError] = useState({
     isError:false,
@@ -38,51 +40,26 @@ export  function Register() {
           name:data.user.name,
           logged:true
         })
+
+        navigate("/dashboard",{
+          replace:true
+      })
       })
       .catch(error=>{
-        console.log(error)
+        console.log(error.response.data)
         setError({
           isError:true,
-          message:"algo salio mal",
+          message:error.response.data.message,
           loading:false
         })
       })
   }
 
-  const recoverSession = ()=>{
-    const token = localStorage.getItem("token")
-
-    if(token){
-      fetch("https://jobsearch-350323.ue.r.appspot.com/api/auth/validate",{
-        method:"POST",
-        headers:{
-          "Content-Type":"application/json",
-          "Authorization":"Bearer "+ token
-        },
-      })
-      .then(res=>res.json())
-      .then(data=>{
-        if(data.failed){
-          console.log(data)
-        }else{
-          context.setUser({
-            id:data.user.id,
-            name:data.user.name,
-            logged:true
-          })
-        }
-        
-      })
-      .catch(error=>console.log(error))
-    }
-    
-  }
 
   return (
     <div className='marginT'>
       <div className="formRegister">
         <h4 className='titleFormRegister'>Registro</h4>
-         {/* <button onClick={recoverSession}>Recuperar sesión</button> */}
          <form  onSubmit={ handleRegister} className="php-email-form"> 
             <div className="row">
               <div className="col-md-12 form-group">
@@ -92,8 +69,8 @@ export  function Register() {
               <div className="form-group mt-3">
                 <label>Rol</label>
                 <select ref={role} className="select-css">
-                  <option value="applicant">Postulante</option>
-                  <option value="employer">Reclutador</option>
+                  <option value={1}>Postulante</option>
+                  <option value={2}>Reclutador</option>
                 </select>
               </div>
             </div>

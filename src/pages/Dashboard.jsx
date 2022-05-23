@@ -17,8 +17,10 @@ export const Dashboard = () => {
             case 0:
                 return <Hello />
             case 1:
+                console.log("soy postulanteee")
                 return <PostulantDashboard />
             case 2:
+                console.log("soy reclutadorr")
                 return <RecruiterDashboard />
             case 3:
                 return <AdminDashboard />

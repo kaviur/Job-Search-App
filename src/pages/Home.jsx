@@ -1,4 +1,5 @@
 import React from 'react'
+import Footer from '../components/layouts/Footer'
 
 export const Home = () => {
   return (
@@ -104,6 +105,7 @@ export const Home = () => {
 
           </div>
         </section>
+        <Footer/>
       </main>
     </div>
   )

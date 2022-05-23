@@ -9,37 +9,16 @@ import { Provider } from 'react-redux'
 import { store } from './store/store';
 import { ListOffers } from './components/offers/ListOffers';
 import { Navbar } from './components/layouts/Navbar';
-import Footer from './components/layouts/Footer';
 import { Contact } from './pages/Contact';
 import { Dashboard } from './pages/Dashboard'
 import { useContext, useEffect } from 'react';
-import { postWithToken } from './api';
 import { userCont } from './context/UserContext';
+import { MyApplications } from './components/postulants/dashboard/MyApplications';
+import MyOfferts from './components/recruiters/dashboard/MyOfferts';
 
 function App() {
 
   const context = useContext(userCont)
-  
-  useEffect(()=>{
-    postWithToken("/api/auth/validate")
-    .then(({data})=>{
-      if(data.failed){
-        console.log(data)
-      }else{
-        // console.log(data);
-        // console.log(data.user.name)
-        context.setUser(
-          {
-            id: data.user.id,
-            role: data.user.role,
-            name: data.user.name,
-            email: data.user.email,
-            logged:true
-          }
-        )
-      }
-    })
-  },[])
 
   return (
     <Provider store={ store }>
@@ -54,8 +33,10 @@ function App() {
         <Route path="/addOffer" element={<AddOffer />} />
         <Route path="/editOffer/:id" element={<EditOffer />} />
         <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/myApplications" element={<MyApplications />} />
+        <Route path="/myOffers" element={<MyOfferts />} />
+
       </Routes>
-      {!context.user.logged&&<Footer />}
     </Provider>
   );
 }

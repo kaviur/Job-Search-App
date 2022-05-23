@@ -1,8 +1,11 @@
 import React from 'react'
+import { ListOffers } from '../../offers/ListOffers'
 
 const PostulantDashboard = () => {
   return (
-    <div>Dashboard del postulante</div>
+    <div>
+      <ListOffers />
+    </div>
   )
 }
 
