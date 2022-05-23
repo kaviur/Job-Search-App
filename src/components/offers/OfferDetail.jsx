@@ -45,8 +45,7 @@ const OfferDetail = ({id}) => {
       Swal.fire({
         icon: 'error',
         title: 'Oops...',
-        text: err.response.data.message,
-        footer: '<a href="">Why do I have this issue?</a>'
+        text: err.response.data.message
       })
     })
   }

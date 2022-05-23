@@ -12,9 +12,11 @@ import { Navbar } from './components/layouts/Navbar';
 import Footer from './components/layouts/Footer';
 import { Contact } from './pages/Contact';
 import { Dashboard } from './pages/Dashboard'
+import { Profile } from './pages/Profile';
 import { useContext, useEffect } from 'react';
 import { postWithToken } from './api';
 import { userCont } from './context/UserContext';
+import AllPostulants from './pages/AllPostulants';
 
 function App() {
 
@@ -54,6 +56,8 @@ function App() {
         <Route path="/addOffer" element={<AddOffer />} />
         <Route path="/editOffer/:id" element={<EditOffer />} />
         <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/allPostulants" element={<AllPostulants />} />
+        <Route path="/postulant/:id" element={<Profile />} />
       </Routes>
       <Footer />
     </Provider>

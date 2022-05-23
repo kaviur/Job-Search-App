@@ -56,6 +56,17 @@ const putWithToken = async (url,data)=>{
     }
 }
 
+const deleteWithToken = async (url)=>{
+    const token = localStorage.getItem("token")
+    if(token){
+        return await instance.delete(url,{
+            headers:{
+                'Authorization':"Bearer "+localStorage.getItem("token")
+            }
+        })
+    }
+}
+
 export default instance
 
-export {post,postWithToken,get,getWithToken,putWithToken}
+export {post,postWithToken,get,getWithToken,putWithToken,deleteWithToken}
