@@ -39,7 +39,7 @@ function App() {
         <Route path="/postulant/:id" element={<Profile />} />
         <Route path="/myApplications" element={<MyApplications />} />
         <Route path="/myOffers" element={<MyOfferts />} />
-        <Route path="/perfil" element={<Perfil />} />
+        {/* <Route path="/perfil" element={<Perfil />} /> */}
       </Routes>
     </Provider>
   );

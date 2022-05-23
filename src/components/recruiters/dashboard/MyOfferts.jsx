@@ -1,3 +1,5 @@
+import '../../../css/offers.css'
+
 import React from 'react'
 import { getWithToken, deleteWithToken } from '../../../api'
 //import { Link } from 'react-router-dom'
@@ -6,7 +8,6 @@ import { offerCont } from '../../../context/OfferContext'
 import { userCont } from '../../../context/UserContext'
 import OfferDetail from '../../offers/OfferDetail'
 const Swal = require('sweetalert2')
-//import '../../../css/offers.css'
 
 const MyOfferts = () => {
     

@@ -1,6 +1,5 @@
 import React from 'react'
 import { useContext } from 'react';
-import { Link } from 'react-router-dom';
 import { userCont } from '../../context/UserContext';
 import LogOut from '../auth/Logout';
 
@@ -21,17 +20,17 @@ export const Navbar = () => {
           <nav id="navbar" className="navbar">
             <ul>
               <li><a className="active " href="/">Home</a></li>
-              <li><a href="/">About</a></li>
-              <li><Link to={"/allpostulants"} >Encontrar programadores</Link></li>
+              {/* <li><a href="/">About</a></li> */}
+              {/* <li><Link to={"/allpostulants"} >Encontrar programadores</Link></li> */}
               <li>
                 {user.logged&&<a href="/listOffers">Lista de ofertas</a>}
               </li>
               <li>
                 {user.logged&&user.role===1&&<a href="/myApplications">Mis postulaciones</a>}
               </li>
-              <li>
+              {/* <li>
                 {user.logged&&user.role===1&&<a href="/perfil">Mi perfil</a>}
-              </li>
+              </li> */}
               <li>
                 {user.logged&&user.role===2&&<a href="/myOffers">Mis publicaciones</a>}
               </li>
