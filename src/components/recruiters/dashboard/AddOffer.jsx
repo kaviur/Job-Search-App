@@ -27,14 +27,14 @@ export const AddOffer = () => {
   const onSubmit = ( event ) => {
 
     event.preventDefault()
-    const {title, description, programming_languages,countries,category, salary, english_level, level_of_experience, mode} = event.target
+    const {title, description, salary, english_level, level_of_experience, mode} = event.target
 
     const newOffer = {
       title: title.value,
       description: description.value,
-      programming_languages: programming_languages.value,
-      countries: countries.value,
-      category: category.value,
+      programming_languages: programmingLanguages,
+      countries: countries,
+      category: categories,
       salary: salary.value,
       english_level: english_level.value,
       level_of_experience: level_of_experience.value,
