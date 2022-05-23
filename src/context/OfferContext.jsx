@@ -28,18 +28,18 @@ export const OfferContext = ({ children }) => {
     }
 
 
-    const editOffer = (offer) => {
-        dispatch({
-            type: types.editOffer,
-            payload: offer
-        })
-    }
+    // const editOffer = (offer) => {
+    //     dispatch({
+    //         type: types.editOffer,
+    //         payload: offer
+    //     })
+    // }
  
     return <offerCont.Provider value={{
         offers: state.offers,
         removeOffer,
         addOffer,
-        editOffer,
+        //editOffer,
       }}>
         { children }
     </offerCont.Provider>

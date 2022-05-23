@@ -59,6 +59,7 @@ const BtnCheckboxes = ({filters,type,setList,list}) => {
         case 'category':
             return (
                 <div className="d-flex justify-content-center">
+                   
                     {
                         filters != "" ?
                         filters[0].categories.map(category => {
@@ -72,6 +73,7 @@ const BtnCheckboxes = ({filters,type,setList,list}) => {
                         <p>Cargando categorías...</p>
                     }
                 </div>
+            
             )
         default:
             return null

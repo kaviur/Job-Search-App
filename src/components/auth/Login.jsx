@@ -8,7 +8,7 @@ import "../../css/login.css"
 export const Login = () => {
 
 const context = useContext(userCont);
-const navigate = useNavigate()
+const navigate = useNavigate();
 
 if(context.user.logged){
     return <Navigate to="/"/>
@@ -32,7 +32,7 @@ if(context.user.logged){
           logged:true,
           role:user.role
       })
-      navigate("/",{
+      navigate("/dashboard",{
           replace:true
       })
     })

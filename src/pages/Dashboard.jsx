@@ -16,11 +16,11 @@ export const Dashboard = () => {
         switch (context.user.role) {
             case 0:
                 return <Hello />
-                break;
             case 1:
+                console.log("soy postulanteee")
                 return <PostulantDashboard />
-                break;
             case 2:
+                console.log("soy reclutadorr")
                 return <RecruiterDashboard />
             case 3:
                 return <AdminDashboard />
@@ -33,8 +33,6 @@ export const Dashboard = () => {
 
     return (
       <div>
-        <h1>Panel administrativo</h1>
-        <h2>{context.user.role}</h2>
         {
             customDashboard()
         }

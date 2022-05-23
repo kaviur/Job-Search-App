@@ -21,19 +21,19 @@ const offersReducers = ( state= {}, action) => {
                 offers: [ action.payload, ...state.offers]
             }
 
-        case types.editOffer:
+        // case types.editOffer:
             
-            const updateOffer = action.payload;
-            const updateOffers = state.offers.map(offer => {
-                if(offer.id === updateOffer.id ){
-                    return updateOffer;
-                }
-                return offer;
-            })
+        //     const updateOffer = action.payload;
+        //     const updateOffers = state.offers.map(offer => {
+        //         if(offer.id === updateOffer.id ){
+        //             return updateOffer;
+        //         }
+        //         return offer;
+        //     })
 
-            return {
-                offers: updateOffers
-            }
+        //     return {
+        //         offers: updateOffers
+        //     }
 
         default:
             return state;

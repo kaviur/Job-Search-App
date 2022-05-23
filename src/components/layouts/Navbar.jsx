@@ -26,15 +26,23 @@ export const Navbar = () => {
               <li>
                 {user.logged&&<a href="/listOffers">Lista de ofertas</a>}
               </li>
-              <li><a href="/contact">Contacto</a></li>
+              <li>
+                {user.logged&&user.role===1&&<a href="/myApplications">Mis postulaciones</a>}
+              </li>
+              <li>
+                {user.logged&&user.role===1&&<a href="/perfil">Mi perfil</a>}
+              </li>
+              <li>
+                {user.logged&&user.role===2&&<a href="/myOffers">Mis publicaciones</a>}
+              </li>
+              <li>
+                {!user.logged&&<a href="/contact">Contacto</a>}
+              </li>
               <li>
                 {!user.logged&&<a href="/register">Registro</a>}
               </li>
               <li>
                 {!user.logged&&<a href="/login">Iniciar Sesión</a>}
-              </li>
-              <li className="nav-item">
-                {user.logged&&<a className="nav-link" href="/dashboard">Dashboard</a>}
               </li>
               <li>
                 {user.logged&&<LogOut/>}

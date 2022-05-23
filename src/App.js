@@ -9,7 +9,6 @@ import { Provider } from 'react-redux'
 import { store } from './store/store';
 import { ListOffers } from './components/offers/ListOffers';
 import { Navbar } from './components/layouts/Navbar';
-import Footer from './components/layouts/Footer';
 import { Contact } from './pages/Contact';
 import { Dashboard } from './pages/Dashboard'
 import { Profile } from './pages/Profile';
@@ -17,31 +16,11 @@ import { useContext, useEffect } from 'react';
 import { postWithToken } from './api';
 import { userCont } from './context/UserContext';
 import AllPostulants from './pages/AllPostulants';
+import { MyApplications } from './components/postulants/dashboard/MyApplications';
+import MyOfferts from './components/recruiters/dashboard/MyOfferts';
+import { Perfil } from './components/postulants/dashboard/Perfil';
 
 function App() {
-
-  const context = useContext(userCont)
-  
-  useEffect(()=>{
-    postWithToken("/api/auth/validate")
-    .then(({data})=>{
-      if(data.failed){
-        console.log(data)
-      }else{
-        console.log(data);
-        console.log(data.user.name)
-        context.setUser(
-          {
-            id: data.user.id,
-            role: data.user.role,
-            name: data.user.name,
-            email: data.user.email,
-            logged:true
-          }
-        )
-      }
-    })
-  },[])
 
   return (
     <Provider store={ store }>
@@ -58,8 +37,10 @@ function App() {
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/allPostulants" element={<AllPostulants />} />
         <Route path="/postulant/:id" element={<Profile />} />
+        <Route path="/myApplications" element={<MyApplications />} />
+        <Route path="/myOffers" element={<MyOfferts />} />
+        <Route path="/perfil" element={<Perfil />} />
       </Routes>
-      <Footer />
     </Provider>
   );
 }
