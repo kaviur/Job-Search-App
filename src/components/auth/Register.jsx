@@ -40,10 +40,10 @@ export  function Register() {
         })
       })
       .catch(error=>{
-        console.log(error)
+        console.log(error.response.data)
         setError({
           isError:true,
-          message:"algo salio mal",
+          message:error.response.data.message,
           loading:false
         })
       })
@@ -93,8 +93,8 @@ export  function Register() {
               <div className="form-group mt-3">
                 <label>Rol</label>
                 <select ref={role} className="select-css">
-                  <option value="applicant">Postulante</option>
-                  <option value="employer">Reclutador</option>
+                  <option value={1}>Postulante</option>
+                  <option value={2}>Reclutador</option>
                 </select>
               </div>
             </div>
