@@ -24,7 +24,7 @@ const BtnCheckboxes = ({filters,type,setList,list}) => {
     switch (type) {
         case 'programming_languages':
             return (
-                <div className="d-flex justify-content-center">
+                <div className="d-flex">
                     {
                         filters != "" ?
                         filters[0].programming_languages.map(language => {
@@ -41,7 +41,7 @@ const BtnCheckboxes = ({filters,type,setList,list}) => {
             )
         case 'countries':
             return (
-                <div className="d-flex justify-content-center">
+                <div className="d-flex">
                     {
                         filters != "" ?
                         filters[0].countries.map(country => {
@@ -58,7 +58,7 @@ const BtnCheckboxes = ({filters,type,setList,list}) => {
             )
         case 'category':
             return (
-                <div className="d-flex justify-content-center">
+                <div className="d-flex">
                    
                     {
                         filters != "" ?

@@ -89,11 +89,11 @@ export const AddOffer = () => {
                   <br />
 
                   <div className="row">
-                    <div className='col-md-8'>
+                    <div className=''>
                       <div className="form-group">
                         <label>Lenguaje de Programación</label><br />
                         <div className="row">
-                          <div className='col-md-10'>
+                          <div className=''>
                           <BtnCheckboxes filters={filters} type="programming_languages" setList={setProgrammingLanguages} list={programmingLanguages} />                    
                           </div>
                         </div>
