@@ -23,7 +23,6 @@ function App() {
   return (
     <Provider store={ store }>
       <Navbar />
-      <NavFilters />
       <Routes>
         <Route path="*" element={<NotFound />} />
         <Route path="/" element={<Home />} />
