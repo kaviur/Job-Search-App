@@ -15,7 +15,6 @@ import { Profile } from './pages/Profile';
 import AllPostulants from './pages/AllPostulants';
 import { MyApplications } from './components/postulants/dashboard/MyApplications';
 import MyOfferts from './components/recruiters/dashboard/MyOfferts';
-import NavFilters from './components/layouts/NavFilters';
 
 
 function App() {
@@ -23,7 +22,6 @@ function App() {
   return (
     <Provider store={ store }>
       <Navbar />
-      <NavFilters />
       <Routes>
         <Route path="*" element={<NotFound />} />
         <Route path="/" element={<Home />} />

@@ -66,8 +66,13 @@ const OfferDetail = ({id}) => {
     <>
         <p><strong>Título:</strong> {offer.title}</p>
         <p><strong>Descripción:</strong> {offer.description}</p>
-        <p><strong>Salario:</strong> {offer.salary}</p>
+        <br />
+        <p><strong>Lenguaje de programación:</strong> {offer.programming_languages}</p>
+        <p><strong>Señority:</strong> {offer.level_of_experience}</p>
         <p><strong>Nivel de inglés:</strong> {offer.english_level}</p>
+        <p><strong>País:</strong> {offer.countries}</p>
+        <p><strong>Modalidad:</strong> {offer.mode}</p>
+        <p><strong>Salario:</strong> {offer.salary}</p>
 
         {/* aqui validar el rol, si es reclutador NO puede ver el boton aplicar */}
         {user.logged&&user.role===1&&<div className='row'>

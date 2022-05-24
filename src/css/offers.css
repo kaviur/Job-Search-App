@@ -7,13 +7,19 @@
     
 }
 
+.marginOfer{
+    margin: 20px;
+}
+.titleOf {
+    color: rgb(255, 235, 205);
+}
 .btn-info1{
-     background-color: purple;
-     color: #f7f7f7;
+     background-color: rgb(236, 208, 236);
+     color: #181515;
 }
 
 .btn-info2{
-    background-color: rgb(230, 145, 18);
+    background-color: rgb(35, 172, 190);
     color: #f7f7f7;
 }
 

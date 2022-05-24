@@ -70,109 +70,108 @@ export const ListOffers = () => {
     // }, [])
 
     return (
-        <div className="container">
+        <div className="container marginT">
             <div className="container">
                 <form action="" method="post">
-                    <div className="row-fluid mt-xxl-5">
-                    <div className="col-md-2">
-                        <select onChange={(e)=>setNivelIngles(e.target.value)} name='english_level' className="select-css">
-                            <option value="">nivel de inglés</option>
+                    <div className="row justify-content-center">
+                        <div className="col-md-2">
+                            <select onChange={(e)=>setNivelIngles(e.target.value)} name='english_level' className="select-css">
+                                <option value="">nivel de inglés</option>
+                                {
+                                filters!=""
+                                ?
+                                    filters.english_level?.map(level => (
+                                    <option key={level} value={level}>{level}</option>
+                                    ))
+                                :
+                                    <option key={uuid()} value="">cargando...</option>
+                                }
+                            </select>
+                        </div>
+                        <div className="col-md-2">
+                            <select onChange={(e)=>setNivelExperiencia(e.target.value)} name='level_of_experience' className="select-css">
+                            <option value="">señority</option>
                             {
-                            filters!=""
-                            ?
-                                filters.english_level?.map(level => (
-                                <option key={level} value={level}>{level}</option>
+                                filters!=""
+                                ?
+                                filters.level_of_experience?.map(level => (
+                                    <option key={level} value={level}>{level}</option>
                                 ))
-                            :
+                                :
                                 <option key={uuid()} value="">cargando...</option>
                             }
-                        </select>
-                    </div>
-                    <div className="col-md-2">
-                        <select onChange={(e)=>setNivelExperiencia(e.target.value)} name='level_of_experience' className="select-css">
-                        <option value="">señority</option>
-                        {
-                            filters!=""
-                            ?
-                            filters.level_of_experience?.map(level => (
-                                <option key={level} value={level}>{level}</option>
-                            ))
-                            :
-                            <option key={uuid()} value="">cargando...</option>
-                        }
-                        </select>
-                    </div>
-                    <div className="col-md-2">
-                        <select onChange={(e)=>setPais(e.target.value)} name='countries' className="select-css">
-                        <option value="">País</option>
-                        {
-                            filters!=""
-                            ?
-                            filters.countries?.map(level => (
-                                <option key={level} value={level}>{level}</option>
-                            ))
-                            :
-                            <option key={uuid()} value="">cargando...</option>
-                        }
-                        </select>
-                    </div>
-                    <div className="col-md-2">
-                        <select onChange={(e)=>setLenguaje(e.target.value)} name='programming_languages' className="select-css">
-                        <option value="">Lenjuaje de Programación</option>
-                        {
-                            filters!=""
-                            ?
-                            filters.programming_languages?.map(level => (
-                                <option key={level} value={level}>{level}</option>
-                            ))
-                            :
-                            <option key={uuid()} value="">cargando...</option>
-                        }
-                        </select>
-                    </div>
-                    <div className="col-md-2">
-                        <select onChange={(e)=>setModalidad(e.target.value)} name='modality' className="select-css">
-                            <option value="">Modalidad</option>
+                            </select>
+                        </div>
+                        <div className="col-md-2">
+                            <select onChange={(e)=>setPais(e.target.value)} name='countries' className="select-css">
+                            <option value="">País</option>
                             {
-                            filters!=""
-                            ?
-                                filters.modality?.map(level => (
-                                <option key={level} value={level}>{level}</option>
+                                filters!=""
+                                ?
+                                filters.countries?.map(level => (
+                                    <option key={level} value={level}>{level}</option>
                                 ))
-                            :
+                                :
                                 <option key={uuid()} value="">cargando...</option>
                             }
-                        </select>
-                    </div>
-                    <div className="col-md-2">
-                    <select onChange={(e)=>setCategoria(e.target.value)} name='categories' className="select-css">
-                        <option value="">Campo</option>
-                        {
-                            filters!=""
-                            ?
-                            filters.categories?.map(level => (
-                                <option key={level} value={level}>{level}</option>
-                            ))
-                            :
-                            <option key={uuid()} value="">cargando...</option>
-                        }
-                        </select>
-                    </div>
+                            </select>
+                        </div>
+                        <div className="col-md-2">
+                            <select onChange={(e)=>setLenguaje(e.target.value)} name='programming_languages' className="select-css">
+                            <option value="">Lenjuaje de Programación</option>
+                            {
+                                filters!=""
+                                ?
+                                filters.programming_languages?.map(level => (
+                                    <option key={level} value={level}>{level}</option>
+                                ))
+                                :
+                                <option key={uuid()} value="">cargando...</option>
+                            }
+                            </select>
+                        </div>
+                        <div className="col-md-2">
+                            <select onChange={(e)=>setModalidad(e.target.value)} name='modality' className="select-css">
+                                <option value="">Modalidad</option>
+                                {
+                                filters!=""
+                                ?
+                                    filters.modality?.map(level => (
+                                    <option key={level} value={level}>{level}</option>
+                                    ))
+                                :
+                                    <option key={uuid()} value="">cargando...</option>
+                                }
+                            </select>
+                        </div>
+                        <div className="col-md-2">
+                        <select onChange={(e)=>setCategoria(e.target.value)} name='categories' className="select-css">
+                            <option value="">Campo</option>
+                            {
+                                filters!=""
+                                ?
+                                filters.categories?.map(level => (
+                                    <option key={level} value={level}>{level}</option>
+                                ))
+                                :
+                                <option key={uuid()} value="">cargando...</option>
+                            }
+                            </select>
+                        </div>
                     </div>
                 </form>
-            hi <h1>{
+               <h1>{
                 pais + " " + lenguaje + " " + nivelIngles + " " + nivelExperiencia + " " + modalidad + " " + categoria
                 }</h1>
             </div>
-        <div className='marginT'>
-            <div className='row justify-content-center'>
-                <div className="container">
-                    <div className="row justify-content-center">
-                        <div className="col-md-6">
-                            <div className="panel">
-                                <div className="panel-heading">
+        
+            <div className='container'>
+                <div className="row">
+                    <div className="col-md-4">
+                        <div className="panel">
+                            <div className="panel-heading">
                                     <div className="row justify-content-center">
-                                        <h4 className="title">Lista de <span>Ofertas</span></h4>
+                                        <div className='titleOf'>Lista de ofertas</div>
                                     </div>
                                 </div>
 
@@ -182,7 +181,6 @@ export const ListOffers = () => {
                                             <tr>
                                                 <th>Título</th>
                                                 <th>Acción</th>
-                                                <th>Lenguaje</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -191,11 +189,8 @@ export const ListOffers = () => {
                                                 <tr key={offer._id}>
                                                     <td>{offer.title}</td>
                                                     <td> 
-                                                        <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal2" onClick={() => setIdOffer(offer._id)} className="btn btn-info1">Más info</button>
+                                                        <button type="button" onClick={() => setIdOffer(offer._id)} className="btn btn-info2">Más info</button>
                                                     </td>
-                                                    <td>{offer.programming_languages.map((language) => (
-                                                        <span key={language} className="btn btn-success m-2">{` ${language} `}</span>
-                                                    ))}</td>
                                                 </tr>
                                             ))
                                         }  
@@ -204,52 +199,18 @@ export const ListOffers = () => {
                                     </table>
                                 </div>
                             </div>
-                        </div>
+                    </div>
+                    <div className="col-md-6 marginOfer">
+                        
+                        {
+                            idOffer && (
+                                <OfferDetail id={idOffer} />
+                            )   
+                        } 
                     </div>
                 </div>
             </div>
-
-            
-            <div className="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div className="modal-dialog">
-                    <div className="modal-content">
-                        <div className="modal-header">
-                            <h5 className="modal-title" id="exampleModalLabel"> Detalle de la oferta</h5>
-                            <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div className="modal-body">
-                            {
-                                idOffer && (
-                                    <OfferDetail id={idOffer} />
-                                )   
-                            } 
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
         </div>
     );
-
-     // <nav className="flex flex-row content-center w-full p-2 mx-auto font-semibold bg-zinc-900 text-white dark:text-stone-50 justify-evenly">
-    //   <ul>
-    //     <li className="inline p-2 hover:border-t-2">
-    //         categorias
-    //     </li>
-    //     <li className="inline p-2 hover:border-t-2">
-    //       modalidad
-    //     </li>
-    //     <li className="inline p-2 hover:border-t-2">
-    //       ciudad
-    //     </li>
-    //     <li className="inline p-2 hover:border-t-2">
-    //       ingles
-    //     </li>
-    //     <li className="inline p-2 hover:border-t-2">
-    //       lenguaje
-    //     </li>
-    //   </ul>
-    // </nav>
-
 
  }
