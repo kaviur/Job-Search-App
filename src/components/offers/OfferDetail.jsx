@@ -71,7 +71,7 @@ const OfferDetail = ({id}) => {
 
         {/* aqui validar el rol, si es reclutador NO puede ver el boton aplicar */}
         {user.logged&&user.role===1&&<div className='row'>
-          <div type="button" className="btn btn-primary" onClick={()=>appyToJob(offer._id)}>Aplicar</div>
+          <div type="button" className="btn btn-primary"  data-dismiss="modal" data-backdrop="false"  onClick={()=>appyToJob(offer._id)}>Aplicar</div>
         </div>}
 
         

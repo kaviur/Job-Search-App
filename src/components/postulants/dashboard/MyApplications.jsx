@@ -1,12 +1,15 @@
 import React from 'react'
 import { useState, useEffect } from 'react'
-import { getWithToken } from '../../../api'
+import { getWithToken, putWithToken } from '../../../api'
 import OfferDetail from '../../offers/OfferDetail'
+import { useNavigate } from 'react-router-dom'
+import Swal from 'sweetalert2'
 
 export const MyApplications = () => {
 
   const [myOffers, setMyOffers] = useState([])
   const [idOffer] = useState("")
+  const navigate = useNavigate();
 
   useEffect(() => {
     getWithToken('/api/offer/applicantOffers')
@@ -14,6 +17,31 @@ export const MyApplications = () => {
       setMyOffers(data)
     })
 }, [])
+
+
+const unapplyToJob = (id) => {
+  putWithToken("/api/offer/unApply", {idOffer: id})
+  .then(data => {
+   // console.log(data)
+    Swal.fire({
+      position: 'top-end',
+      icon: 'success',
+      title: 'Has desaplicado a esta oferta',
+      showConfirmButton: false,
+      timer: 1800
+    })
+
+    navigate("/dashboard",{
+      replace:true
+    })
+   
+  })
+  .catch(err => {
+    console.log(err)
+  })
+}
+
+
 
   return (
     <>
@@ -33,8 +61,8 @@ export const MyApplications = () => {
                       <thead>
                         <tr>
                           <th>Título</th>
-                          <th>Acción</th>
                           <th>Salario</th>
+                          <th>Accion</th>
                         </tr>
                       </thead>
                       <tbody>
@@ -42,8 +70,8 @@ export const MyApplications = () => {
                           myOffers.map((offer) => (
                               <tr key={offer._id}>
                                 <td>{offer.title}</td>  
-                                <td>{offer.description} </td>
-                                <td> {offer.salary}</td>
+                                <td>{offer.salary} </td>
+                                <td> <div type="button" data-dismiss="modal" data-backdrop="false" className="btn btn-danger" onClick={()=>unapplyToJob(offer._id)}>Desaplicar</div></td>
                               </tr>
                             ))
                         }  
@@ -55,9 +83,11 @@ export const MyApplications = () => {
               </div>
             </div>
           </div>
+        </div>
+      </div>
 
-
-          <div className="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      
+      <div className="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div className="modal-dialog">
               <div className="modal-content">
                 <div className="modal-header">
@@ -74,8 +104,6 @@ export const MyApplications = () => {
               </div>
             </div>
           </div>
-        </div>
-      </div>
     </>
   )
 }
