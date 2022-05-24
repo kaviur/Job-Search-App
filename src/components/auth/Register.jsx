@@ -74,6 +74,7 @@ export  function Register() {
                 </select>
               </div>
             </div>
+            
             <div className="row">
                 <div className="col-md-12 form-group">
                   <label>Email</label>

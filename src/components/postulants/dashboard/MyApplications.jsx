@@ -1,6 +1,20 @@
 import React from 'react'
+import { useState, useEffect } from 'react'
+import { getWithToken } from '../../../api'
+import OfferDetail from '../../offers/OfferDetail'
 
 export const MyApplications = () => {
+
+  const [myOffers, setMyOffers] = useState([])
+  const [idOffer] = useState("")
+
+  useEffect(() => {
+    getWithToken('/api/offer/applicantOffers')
+    .then(({data}) => {
+      setMyOffers(data)
+    })
+}, [])
+
   return (
     <>
       <div className='marginT '>
@@ -20,27 +34,42 @@ export const MyApplications = () => {
                         <tr>
                           <th>Título</th>
                           <th>Acción</th>
+                          <th>Salario</th>
                         </tr>
                       </thead>
                       <tbody>
                         {
-                          // listOffers.map((offer) => (
-                          //     <tr key={offer._id}>
-                          //       <td>{offer.title}</td>
-                          //       <td> 
-                          //                               {/* <Link to={`/editOffer/${offer._id}`} className="btn btn-warning">Editar</Link> */}
-                          //                               {/* <button type="button" onClick={() => removeOffer(offer._id)} className="btn btn-danger">Eliminar</button> */}
-                          //         <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" onClick={() => setIdOffer(offer._id)} className="btn btn-info2">Ver detalle</button>
-                          //       </td>
-                          //       <td className='text-center'><button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal3" onClick={() => menuPostulantes(offer.applicants)} className="btn btn-success">{offer.applicants.length}</button></td>
-                          //       <td></td>
-                          //     </tr>
-                          //   ))
+                          myOffers.map((offer) => (
+                              <tr key={offer._id}>
+                                <td>{offer.title}</td>  
+                                <td>{offer.description} </td>
+                                <td> {offer.salary}</td>
+                              </tr>
+                            ))
                         }  
                                         
                       </tbody>
                     </table>
                   </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+          <div className="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div className="modal-dialog">
+              <div className="modal-content">
+                <div className="modal-header">
+                    <h5 className="modal-title" id="exampleModalLabel"> Detalle de la oferta</h5>
+                    <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div className="modal-body">
+                  {
+                    idOffer && (
+                      <OfferDetail id={idOffer} />
+                    )
+                  }
                 </div>
               </div>
             </div>

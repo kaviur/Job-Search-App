@@ -12,13 +12,10 @@ import { Navbar } from './components/layouts/Navbar';
 import { Contact } from './pages/Contact';
 import { Dashboard } from './pages/Dashboard'
 import { Profile } from './pages/Profile';
-import { useContext, useEffect } from 'react';
-import { postWithToken } from './api';
-import { userCont } from './context/UserContext';
 import AllPostulants from './pages/AllPostulants';
 import { MyApplications } from './components/postulants/dashboard/MyApplications';
 import MyOfferts from './components/recruiters/dashboard/MyOfferts';
-import { Perfil } from './components/postulants/dashboard/Perfil';
+
 
 function App() {
 
@@ -39,7 +36,7 @@ function App() {
         <Route path="/postulant/:id" element={<Profile />} />
         <Route path="/myApplications" element={<MyApplications />} />
         <Route path="/myOffers" element={<MyOfferts />} />
-        {/* <Route path="/perfil" element={<Perfil />} /> */}
+        {/* <Route path="/perfil" element={<Profile />} /> */}
       </Routes>
     </Provider>
   );
