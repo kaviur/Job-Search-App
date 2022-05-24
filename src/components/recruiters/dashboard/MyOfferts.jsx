@@ -7,6 +7,7 @@ import { useContext, useState, useEffect } from 'react'
 import { offerCont } from '../../../context/OfferContext'
 import { userCont } from '../../../context/UserContext'
 import OfferDetail from '../../offers/OfferDetail'
+import { useNavigate } from 'react-router-dom'
 const Swal = require('sweetalert2')
 
 const MyOfferts = () => {
@@ -16,8 +17,9 @@ const MyOfferts = () => {
     const [listOffers, setListOffers] = useState([])
     const [showPostulants, setShowPostulants] = useState(false)
     const [postulants, setPostulants] = useState([])
-    const { offers, removeOffer } = useContext(offerCont)
+    const { removeOffer } = useContext(offerCont)
     const { user } = useContext(userCont)
+    const navigate = useNavigate();
 
     useEffect(() => {
         getWithToken('/api/offer/recruiterOffers')
@@ -57,6 +59,11 @@ const MyOfferts = () => {
                         )
                         removeOffer(id)
                     }
+
+                    navigate("/listOffers",{
+                        replace:true
+                    })
+                    
                 })
             }
         })
@@ -105,9 +112,11 @@ const MyOfferts = () => {
                                                     <td> 
                                                         {/* <Link to={`/editOffer/${offer._id}`} className="btn btn-warning">Editar</Link> */}
                                                         {/* <button type="button" onClick={() => removeOffer(offer._id)} className="btn btn-danger">Eliminar</button> */}
+                                                    
+                                                        <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" onClick={() => setIdOffer(offer._id)} className="btn btn-primary">Ver detalle</button> 
                                                         <button type="button" onClick={() =>onDelete(offer._id)} className="btn btn-danger">Eliminar</button>
-                                                        <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" onClick={() => setIdOffer(offer._id)} className="btn btn-info2">Ver detalle</button>
                                                     </td>
+                                                    
                                                     <td className='text-center'><button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal3" onClick={() => menuPostulantes(offer.applicants)} className="btn btn-success">{offer.applicants.length}</button></td>
                                                     <td></td>
                                                 </tr>

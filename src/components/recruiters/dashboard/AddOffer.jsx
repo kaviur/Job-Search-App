@@ -10,18 +10,11 @@ export const AddOffer = () => {
 
   const { addOffer } = useContext(offerCont)
   const navigate = useNavigate();
-  const [offer, setOffer] = useState('');
   const [filters, setFilters] = useState([]);
   const [ categories, setCategories ] = useState([]);
-  const [ error, setError ] = useState({
-    isError: false,
-    message: '',
-    loading: false
-  });
+ 
   const [ countries, setCountries ] = useState([]);
-  const [ cities, setCities ] = useState([]);
   const [ programmingLanguages, setProgrammingLanguages ] = useState([]);
-  const [ tools, setTools ] = useState([]);
 
 
   const onSubmit = ( event ) => {
@@ -44,7 +37,7 @@ export const AddOffer = () => {
     postWithToken("/api/offer/",newOffer)
     .then(data=>{
       addOffer(newOffer);
-      navigate("/listOffers", { replace: true });
+      navigate("/myOffers", { replace: true });
     })
     .catch(error=>{
       console.log(error.response.data)
