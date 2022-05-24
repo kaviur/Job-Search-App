@@ -44,6 +44,8 @@ const OfferDetail = ({id}) => {
       navigate("/dashboard",{
         replace:true
       })
+      
+      //Swal.close();
     })
     .catch(err => {
       console.log(err)
