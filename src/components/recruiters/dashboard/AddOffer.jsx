@@ -5,6 +5,8 @@ import { useNavigate } from 'react-router-dom'
 import { postWithToken, get } from '../../../api';
 import { v4 as uuid } from 'uuid'
 import BtnCheckboxes from '../../commons/BtnCheckboxes'
+//import { filterCont } from '../../../context/FiltersContext';
+
 
 export const AddOffer = () => {
 
@@ -16,7 +18,8 @@ export const AddOffer = () => {
   const [ countries, setCountries ] = useState([]);
   const [ programmingLanguages, setProgrammingLanguages ] = useState([]);
 
-
+  //const { filter } = useContext(filterCont);
+  
   const onSubmit = ( event ) => {
 
     event.preventDefault()
@@ -54,9 +57,9 @@ export const AddOffer = () => {
 
   return (
     <div className='marginT '>
-{/* 
-      {
-        categories.map(language => {
+
+      {/* {
+        filter.language.map(language => {
           return <p>{language}</p>
         }
         )
