@@ -191,8 +191,6 @@
 .formOffer {
     position: relative;
     z-index: 1;
-    background: rgb(139, 163, 214);
-    max-width: 600px;
     margin: 20px auto 100px;
     padding: 45px;
     /* text-align: center; */

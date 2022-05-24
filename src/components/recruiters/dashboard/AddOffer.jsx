@@ -68,14 +68,17 @@ export const AddOffer = () => {
         }
         )
       } */}
-      <div className='row justify-content-center'>
-        <div className='col-md-6'>
-        <div className='title'>Nueva Oferta</div>
+      <div className='row justify-content-center border-3'>
+        <div className='p-4'>
+        
           <div className="formOffer">
             <div className="row">
+            <div className='title pb-5'>Nueva Oferta</div>
+            <br />
+            <br /><br />
               <form onSubmit={ onSubmit }>
                   <div className="row">
-                    <div className='col-md-12'>
+                    <div className='col-md-6'>
                       <div className="form-group">
                         <label>Título</label>
                         <input type="text" className="form-control" placeholder="Título" name='title'  />
@@ -83,7 +86,7 @@ export const AddOffer = () => {
                     </div>
                   </div>
                   <div className="row">
-                    <div className='col-md-12'>
+                    <div className='col-md-6'>
                       <div className="form-group">
                         <label>Descripción</label>
                         <input type="text" className="form-control" placeholder="Descripción" name='description'  />
@@ -115,15 +118,17 @@ export const AddOffer = () => {
                   </div>
                   <br />
                   <div className="row">
-                    <div className='col-md-6'>
+                    <div className=''>
                       <label>Países- category</label><br />
                       <BtnCheckboxes filters={filters} type="category" setList={setCategories} list={categories} />
                     </div>
                   </div>
                   <br />
                   <div className="form-group">
+                  <div className='col-md-6'>
                     <label>Salario</label>
                     <input type="number" className="form-control" placeholder="Salario" name="salary" />
+                    </div>
                   </div>
                   <br />
                   <div className="row">
@@ -186,9 +191,14 @@ export const AddOffer = () => {
                       </div>
                     </div>
                   </div>
+                  <br /><br />
 
                   <div className='row justify-content-center'>
+                  <div className="row">
+                    <div className='col-md-6'>
                     <button className="btn btn-dark btn-lg btn-block" >Crear </button>
+                    </div>
+                    </div>
                   </div> 
                 </form>
             </div></div>
