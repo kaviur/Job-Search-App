@@ -4,7 +4,6 @@ import { v4 as uuid } from 'uuid'
 import React from 'react'
 // import { offerCont } from '../../context/OfferContext'
 import OfferDetail from './OfferDetail'
-import { getWithToken } from '../../api'
     
 
 export const ListOffers = () => {
@@ -41,10 +40,10 @@ export const ListOffers = () => {
         })
 
         //trae las ofertas sin filtros
-        getWithToken('/api/offer')
-        .then(({data}) => {
-        setListOffers(data)
-        })
+        // getWithToken('/api/offer')
+        // .then(({data}) => {
+        // setListOffers(data)
+        // })
     },[])
 
     //ofertas con filtros
